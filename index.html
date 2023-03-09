@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./imgs/favicon-32x32.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
     <script defer src="script.js"></script>
@@ -16,36 +17,72 @@
   </head>
   <body>
     <main>
-      <div class="step">
-        <h1>WE'RE LAUNCHING SOON</h1>
-        <div id="countdown">
-          <div id="days"></div>
-          <div id="hours"></div>
-          <div id="minutes"></div>
-          <!-- <div id="seconds"></div> -->
+      <h1>WE'RE LAUNCHING SOON</h1>
+      <div class="countdown">
+        <div class="frame">
+          <div class="top" unit="days">
+            <div class="wrapper" unit="days">
+              <div id="days-top"></div>
+            </div>
+          </div>
+          <div class="bottom" unit="days">
+            <div id="days-bottom"></div>
+          </div>
+          <div class="dot"></div>
+          <div class="dot right"></div>
         </div>
         <div class="frame">
-          <div class="divide-line"></div>
-
-          <div class="top">
-            <div id="minutes-top">5</div>
+          <div class="top" unit="hours">
+            <div class="wrapper" unit="hours">
+              <div id="hours-top"></div>
+            </div>
           </div>
-          <div class="bottom">
-            <div id="minutes-bottom">5</div>
+          <div class="bottom" unit="hours">
+            <div id="hours-bottom"></div>
           </div>
+          <div class="dot"></div>
+          <div class="dot right"></div>
         </div>
         <div class="frame">
-          <div class="divide-line"></div>
-
-          <div class="top">
-            <div id="seconds-top"></div>
+          <div class="top" unit="minutes">
+            <div class="wrapper" unit="minutes">
+              <div id="minutes-top"></div>
+            </div>
           </div>
-          <div class="bottom">
+          <div class="bottom" unit="minutes">
+            <div id="minutes-bottom"></div>
+          </div>
+          <div class="dot"></div>
+          <div class="dot right"></div>
+        </div>
+        <div class="frame">
+          <div class="top" unit="seconds">
+            <div class="wrapper" unit="seconds">
+              <div id="seconds-top"></div>
+            </div>
+          </div>
+          <div class="bottom" unit="seconds">
             <div id="seconds-bottom"></div>
           </div>
+          <div class="dot"></div>
+          <div class="dot right"></div>
         </div>
+        <div class="unit-label">DAYS</div>
+        <div class="unit-label">HOURS</div>
+        <div class="unit-label">MINUTES</div>
+        <div class="unit-label">SECONDS</div>
       </div>
     </main>
-    <footer>Icons here</footer>
+    <footer>
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        ><img src="./imgs/icon-facebook.svg" alt="facebook-logo"
+      /></a>
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        ><img src="./imgs/icon-pinterest.svg" alt="pinterest-logo"
+      /></a>
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        ><img src="./imgs/icon-instagram.svg" alt="instagram-logo"
+      /></a>
+    </footer>
   </body>
 </html>

@@ -1,44 +1,70 @@
+:root {
+  --bg-dark: hsl(235, 16%, 14%);
+  --frame-bg: hsl(236, 25%, 22%);
+  --frame-top: hsl(236, 24%, 27%);
+  --frame-bottom: hsl(237, 21%, 33%);
+  --counter-top: hsl(345, 58%, 57%);
+  --counter-bottom: hsl(345, 95%, 68%);
+  --label: hsl(237, 18%, 59%);
+}
+
 body {
+  min-height: 100dvh;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-image: url(./imgs/bg-stars.svg);
-  /* background-position: top right, bottom left; */
-  /* background-repeat: no-repeat; */
-  min-height: 100vh;
   display: grid;
   grid-template-rows: 1fr 25vh;
-  background-color: hsl(235, 16%, 14%);
+  background-image: url(./imgs/bg-stars.svg);
+  background-color: var(--bg-dark);
   font-family: 'Red Hat Text', sans-serif;
+  color: white;
 }
 
 main {
+  padding: 2em;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  gap: 3em;
 }
 
-footer {
-  width: 100vw;
-  background-image: url(./imgs/pattern-hills.svg);
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+h1 {
+  font-size: clamp(20px, 3vw, 1vw);
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+
+.countdown {
+  width: clamp(200px, 100%, 700px);
+  aspect-ratio: 1 / 0.35;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 2fr 1fr;
+  gap: 1em;
 }
 
 .frame {
-  height: 50px;
-  width: 100px;
-  background-color: rgb(37, 37, 37);
-  font-size: 35px;
   position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: var(--frame-bg);
+  box-shadow: 0 3px 0 0 hsl(235, 25%, 29%), 0 6px 0 0 var(--frame-bg);
+  font-size: 5em;
+  font-weight: 700;
+}
+
+.frame,
+.top,
+.bottom {
+  border-radius: 1vw;
 }
 
 .top,
-.bottom {
+.bottom,
+.wrapper {
   height: 100%;
   width: 100%;
   display: flex;
@@ -47,39 +73,91 @@ footer {
   position: absolute;
 }
 
-.top {
+.wrapper {
   transition: transform 0.1s;
   transform-style: preserve-3d;
 }
 
-.top.flip {
+.wrapper.flip {
   transform: rotateX(-90deg);
 }
 
 .top {
   width: 100%;
   height: 100%;
-  background-color: rgb(29, 29, 29);
-  color: white;
   clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
   z-index: 2;
+  background-color: var(--frame-top);
+  color: var(--counter-top);
+}
+
+.top.drop {
+  background-color: var(--frame-bg);
+}
+
+.dot {
+  position: absolute;
+  height: 10%;
+  width: 10%;
+  border-radius: 100vw;
+  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+  background-color: var(--bg-dark);
+  z-index: 1000;
+  top: calc(50% - 5%);
+  left: -5.1%;
+}
+
+.dot.right {
+  transform: rotate(180deg);
+  left: 95.9%;
 }
 
 .bottom {
   width: 100%;
   height: 100%;
-  background-color: rgb(37, 37, 37);
+  background-color: var(--frame-bottom);
+  color: var(--counter-bottom);
   clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
 }
 
 .bottom.darker {
-  background-color: rgb(29, 29, 29);
-  /* background-color: red; */
+  background-color: var(--frame-top);
 }
 
-.divide-line {
-  border-top: 0.5px solid rgb(42, 42, 42);
-  position: relative;
-  top: 25px;
-  z-index: 100000;
+.unit-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--label);
+}
+
+footer {
+  background-image: url(./imgs/pattern-hills.svg);
+  background-size: cover;
+  color: var(--label);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+@media only screen and (max-width: 769px) {
+  .frame {
+    font-size: 8vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .unit-label {
+    font-size: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .unit-label {
+    font-size: 0.325rem;
+  }
 }
